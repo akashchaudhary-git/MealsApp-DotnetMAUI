@@ -26,63 +26,68 @@
                Grid.Row="1"
                TextColor="#555"/>
         <!--Scrollable list of Meals-->
-        <CollectionView Grid.Row="2" ItemsSource="{Binding Meals}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical"
+        <RefreshView Grid.Row="2" 
+                     Margin="0,16"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding LoadMealCommand}">
+            <CollectionView  ItemsSource="{Binding Meals}"
+                        >
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
                                    ItemSpacing="20"/>
 
-            </CollectionView.ItemsLayout>
+                </CollectionView.ItemsLayout>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Meal">
-                    <Border MinimumHeightRequest="230"
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Meal">
+                        <Border MinimumHeightRequest="230"
                             Stroke="#efefef">
-                        <Border.Shadow>
-                            <Shadow Brush="Black"
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
                                 Offset="8,8"
                                 Radius="0"
-                                Opacity="0.1" />    
-                        </Border.Shadow>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
+                                Opacity="0.1" />
+                            </Border.Shadow>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Image Aspect="AspectFill" Source="{Binding Image}"/>
+                                <Image Aspect="AspectFill" Source="{Binding Image}"/>
 
-                            <Grid Grid.Column="1" Padding="16">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                                <Grid Grid.Column="1" Padding="16">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
 
-                                <Label Text="{Binding Name}"
+                                    <Label Text="{Binding Name}"
                                        FontSize="18"
                                        FontFamily="Roboto-Regular"/>
-                                
-                                <Label Text="Tomorrow, 8:00 - 11:00 AM"
+
+                                    <Label Text="Tomorrow, 8:00 - 11:00 AM"
                                        FontSize="12"
                                        Grid.Row="1"
                                        TextColor="#b1b1b1"
                                        FontFamily="Roboto-Regular"/>
-                                
-                                <!--<Label Grid.Row="2" 
+
+                                    <!--<Label Grid.Row="2" 
                                        Padding="0,6,0,0" 
                                        BackgroundColor="Aqua" 
                                        WidthRequest="30"
                                        
                                        FontSize="8" 
                                        Text="Nonveg"/>-->
-                                
 
-                                
-                                
 
-                                <Label Text="{Binding Description}"
+
+
+
+                                    <Label Text="{Binding Description}"
                                        Grid.Row="2"
                                        FontFamily="Roboto-Regular"
                                        TextColor="#555"
@@ -90,44 +95,47 @@
                                        Padding="0,6,0,0"
                                        />
 
-                                <FlexLayout BindableLayout.ItemsSource="{Binding Contents}"
+                                    <FlexLayout BindableLayout.ItemsSource="{Binding Contents}"
                                             Grid.Row="3"
                                             AlignItems="Start"
                                             Wrap="Wrap">
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate>
-                                            <Frame Padding="6"
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Frame Padding="6"
                                                    Margin="1"
                                                    BorderColor="Transparent"
                                                    BackgroundColor="#ecf7ff"
                                                    >
-                                                
-                                                <Label FontSize="8" Text="{Binding .}"/>
-                                            </Frame>
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
-                                </FlexLayout>
 
-                                <Label FontSize="8" 
-                                        Padding="8,6,0,0"
-                                        Grid.Row="4"
-                                        Text="{Binding Dish}"/>
+                                                    <Label FontSize="8" Text="{Binding .}"/>
+                                                </Frame>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </FlexLayout>
 
-
-
+                                    <Label FontSize="8" 
+                                       Padding="8,6,0,0"
+                                       Grid.Row="4"
+                                       TextColor="#b3b3e3"
+                                       Text="{Binding Dish}"/>
 
 
 
 
 
+
+
+
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            
-        </CollectionView>
+
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </RefreshView>
         <!--Create new Meal button-->
         <Button Text="Create New Meal"
                 Grid.Row="3"

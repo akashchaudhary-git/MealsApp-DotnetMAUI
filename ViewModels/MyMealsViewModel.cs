@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Meals_App.Models;
 
 namespace Meals_App.ViewModels
@@ -8,14 +9,21 @@ namespace Meals_App.ViewModels
         [ObservableProperty]
         List<Meal> meals;
 
+        [ObservableProperty]
+        bool isRefreshing;
+
         public MyMealsViewModel()
         {
-            LoadMeal();
+            LoadMealAsync();
         }
 
-        private void LoadMeal()
+        [RelayCommand]
+        public async Task LoadMealAsync()
         {
-            Meals = new()
+            try 
+            {
+                await Task.Delay(2000);
+                Meals = new()
             {
             new Meal(
                 Name:"Vegetable Sandwich",
@@ -36,6 +44,13 @@ namespace Meals_App.ViewModels
                 Dish:"Veg"
                 )
             };
+            }
+            
+            finally 
+            {
+                IsRefreshing = false;
+            
+            }
         }
     }
 }
