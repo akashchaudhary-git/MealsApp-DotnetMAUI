@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "dLAzAsqwwoLqNQVfik34lRclBwTcMM3y6sRKKpDLrJfsH3eXSypLHSmRrcCgEn2RALNvz1xrDbehWOkOzBEZug==",
+  "dgSpecHash": "sbaRhr/wSyl8NggL0NpBAB6nFl+gjyBzLpV5CoX8MYr10I8tilPjHmbA+CQAcoACsgJHZEe5GjwlrWsIOTShag==",
   "success": true,
   "projectFilePath": "C:\\Users\\Akash\\.NET Workspace\\Meals App\\Meals App.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Akash\\.nuget\\packages\\communitytoolkit.maui\\2.0.0\\communitytoolkit.maui.2.0.0.nupkg.sha512",
+    "C:\\Users\\Akash\\.nuget\\packages\\communitytoolkit.maui.core\\2.0.0\\communitytoolkit.maui.core.2.0.0.nupkg.sha512",
     "C:\\Users\\Akash\\.nuget\\packages\\communitytoolkit.mvvm\\8.1.0\\communitytoolkit.mvvm.8.1.0.nupkg.sha512",
     "C:\\Users\\Akash\\.nuget\\packages\\googlegson\\2.9.0.1\\googlegson.2.9.0.1.nupkg.sha512",
     "C:\\Users\\Akash\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.1\\microsoft.extensions.configuration.6.0.1.nupkg.sha512",
