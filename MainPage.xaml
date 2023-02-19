@@ -4,7 +4,13 @@
              xmlns:viewmodels="clr-namespace:Meals_App.ViewModels"
              xmlns:models="clr-namespace:Meals_App.Models"
              x:DataType="viewmodels:MyMealsViewModel"
-             x:Class="Meals_App.MainPage">
+             x:Class="Meals_App.MainPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Shell.NavBarIsVisible="false"
+             >
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent" />
+    </ContentPage.Behaviors>
 
 
     <Grid Padding="16">
@@ -69,11 +75,32 @@
                                        FontSize="18"
                                        FontFamily="Roboto-Regular"/>
 
-                                    <Label Text="Tomorrow, 8:00 - 11:00 AM"
-                                       FontSize="12"
+                                    <!--<Label Text="Tomorrow, 8:00 - 11:00 AM"
                                        Grid.Row="1"
+                                       FontSize="12"
                                        TextColor="#b1b1b1"
-                                       FontFamily="Roboto-Regular"/>
+                                       FontFamily="Roboto-Regular"/>-->
+                                    <FlexLayout Wrap="Wrap"
+                                                Grid.Row="1"
+                                                AlignItems="Start">
+                                        <Label FontSize="12"
+                                       TextColor="#b1b1b1"
+                                       FontFamily="Roboto-Regular" Text="{Binding StartDateTime,Converter={StaticResource DayTimeToMealDayConverter}}"/>
+                                        <Label FontSize="12"
+                                       TextColor="#b1b1b1"
+                                       FontFamily="Roboto-Regular" Text=", "/>
+                                        <Label FontSize="12"
+                                       TextColor="#b1b1b1"
+                                       FontFamily="Roboto-Regular" Text="{Binding StartDateTime,Converter={StaticResource DateTimeToTimeConverter}}"/>
+                                        <Label FontSize="12"
+                                       TextColor="#b1b1b1"
+                                       FontFamily="Roboto-Regular" Text=" - "/>
+                                        <Label FontSize="12"
+                                       TextColor="#b1b1b1"
+                                       FontFamily="Roboto-Regular" Text="{Binding EndDateTime,Converter={StaticResource DateTimeToTimeConverter}}"/>
+
+
+                                    </FlexLayout>
 
                                     <!--<Label Grid.Row="2" 
                                        Padding="0,6,0,0" 
